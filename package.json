@@ -8,7 +8,6 @@
     "serve": "turbo devserver",
     "test": "",
     "build": "",
-    "postinstall": "turbo postinstall",
     "reset": "rimraf ./tmp/*"
   },
   "dependencies": {
