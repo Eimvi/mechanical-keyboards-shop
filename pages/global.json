@@ -1,0 +1,9 @@
+{
+    "title": "Eimvi's Coffee Shop",
+    "description": "Best coffee in the world!",
+    "hours" : [
+        {"days": "Mon - Fri", "time": "6am to 10pm" },
+        {"days": "Saturday", "time": "7am to 11pm" },
+        {"days": "Sunday", "time": "7am to 9pm" }
+    ]
+}
