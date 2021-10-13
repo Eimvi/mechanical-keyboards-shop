@@ -1,37 +1,50 @@
-// Full Documentation - https://docs.turbo360.co
-const vertex = require('vertex360')({ site_id: process.env.TURBO_APP_ID })
 const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+const mustacheExpress = require('mustache-express')
 
-const app = express() // initialize app
+const { PORT } = require('./domain/properties')
+const DB = require('./domain/db')
+const routes = require('./routes/routes')
 
-/*  Apps are configured with settings as shown in the config object below.
-    Options include setting views directory, static assets directory,
-    and database settings. Default config settings can be seen here:
-    https://docs.turbo360.co */
+DB()
 
-const config = {
-  views: 'views', // Set views directory
-  static: 'public', // Set static assets directory
-  logging: true,
+const { Router, json, urlencoded } = express
+const app = express()
+const router = Router()
 
-  /*  To use the Turbo 360 CMS, from the terminal run
-      $ turbo extend cms
-      then uncomment line 21 below: */
+app.use(json())
+app.use(urlencoded({ extended: true }))
+app.use(cors())
+app.use(morgan('dev'))
 
-  // db: vertex.nedb()
-}
+const path = require('path');
+const VIEWS_PATH = path.join(__dirname, '/views');
 
-vertex.configureApp(app, config)
+app.engine('mustache', mustacheExpress(VIEWS_PATH + '/partials', '.mustache'))
+app.set('view engine', 'mustache')
+app.set('views', VIEWS_PATH)
 
-const main = require('./routes/main')
-app.use('/', main)
+app.use(express.static(__dirname + '/public/'));
 
-// // import routes
-// const index = require('./routes/index')
-// const api = require('./routes/api') // sample API Routes
+app.use( function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*') 
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method') 
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE') 
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE') 
+    next() 
+}) 
+routes(router)
 
-// // set routes
-// app.use('/', index)
-// app.use('/api', api) // sample API Routes
+router.get('/' , (req, res) => {
+  res.json({
+      message: 'Hellow Api'
+  })
+})
 
-module.exports = app
+app.use(router)
+
+app.listen(PORT, () => {
+  console.log(`Server runing on port ${PORT}`)
+})
+

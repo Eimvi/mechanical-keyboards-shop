@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 var app = require('../app');
-var debug = require('debug')('exp-test:server');
 var http = require('http');
 
 /* Get port from environment and store in Express. */
