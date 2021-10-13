@@ -5,7 +5,7 @@ const context = require('../pages/global.json')
 const home = require('../pages/home.json')
 
 module.exports = (router) => {
-router.get('/home', (req, res, next) =>{
+router.get('/', (req, res, next) =>{
     res.render('home', {context, home})
 });
 

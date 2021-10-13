@@ -36,11 +36,6 @@ app.use( function (req, res, next) {
 }) 
 routes(router)
 
-router.get('/' , (req, res) => {
-  res.json({
-      message: 'Hellow Api'
-  })
-})
 
 app.use(router)
 
