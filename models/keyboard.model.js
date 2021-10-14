@@ -2,16 +2,13 @@ const { Schema, set } = require('mongoose')
 const keyboardSchema = new Schema(
     {
         name: {
-            type: String,
-            lowercase: true
+            type: String
         },
-        primary: {
-            type: String,
-            lowercase: true
+        price: {
+            type: Number
         },
-        secundary: {
-            type: String,
-            lowercase: true
+        switchs: {
+            type: String
         }
     },
     {

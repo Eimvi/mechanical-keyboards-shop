@@ -1,6 +1,6 @@
 {
-    "title": "Eimvi's Coffee Shop",
-    "description": "Best coffee in the world!",
+    "title": "Eimvi's Mechanical Keyboards Shop",
+    "description": "Best Mechanical Keyboards Shop!",
     "hours" : [
         {"days": "Mon - Fri", "time": "6am to 10pm" },
         {"days": "Saturday", "time": "7am to 11pm" },

@@ -1,6 +1,7 @@
 {
-  "name": "coffe-shop",
+  "name": "mechanical_keyboard_shop",
   "version": "0.0.0",
+  "description": "Una pequeña tienda de teclados mecánicos",
   "server": false,
   "private": true,
   "scripts": {
@@ -14,8 +15,7 @@
     "http": "^0.0.1-security",
     "mongoose": "^6.0.10",
     "morgan": "^1.10.0",
-    "mustache-express": "^1.3.2",
-    "vertex360": "^0.10.64"
+    "mustache-express": "^1.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
